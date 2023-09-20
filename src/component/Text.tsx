@@ -1,5 +1,4 @@
 import React, { CSSProperties, SVGProps, useMemo } from 'react';
-import reduceCSSCalc from 'reduce-css-calc';
 import classNames from 'classnames';
 import _ from 'lodash';
 import { isNumber, isNumOrStr } from '../util/DataUtils';
@@ -222,16 +221,16 @@ export const Text = ({
   const x = (propsX as number) + (isNumber(dx as number) ? (dx as number) : 0);
   const y = (propsY as number) + (isNumber(dy as number) ? (dy as number) : 0);
 
-  let startDy: number;
+  let startDy: string | number;
   switch (verticalAnchor) {
     case 'start':
-      startDy = reduceCSSCalc(`calc(${capHeight})`);
+      startDy = `calc(${capHeight})`;
       break;
     case 'middle':
-      startDy = reduceCSSCalc(`calc(${(wordsByLines.length - 1) / 2} * -${lineHeight} + (${capHeight} / 2))`);
+      startDy = `calc(${(wordsByLines.length - 1) / 2} * -${lineHeight} + (${capHeight} / 2))`;
       break;
     default:
-      startDy = reduceCSSCalc(`calc(${wordsByLines.length - 1} * -${lineHeight})`);
+      startDy = `calc(${wordsByLines.length - 1} * -${lineHeight})`;
       break;
   }
 
