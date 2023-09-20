@@ -41,12 +41,6 @@
     "test-storybook:url": "test-storybook --url http://127.0.0.1:9009 --config-dir storybook",
     "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run build-storybook --quiet && npx http-server storybook/public --port 9009 --silent\" \"wait-on tcp:127.0.0.1:9009 && npm run test-storybook:url --maxWorkers=2\""
   },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/recharts/recharts.git"
